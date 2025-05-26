@@ -1,0 +1,29 @@
+name: scrna_ot_gpu
+channels:
+  - rapidsai
+  - nvidia
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  # Core
+  - python=3.11
+  - cudatoolkit=11.8  # Make sure your driver supports CUDA ≥ 11.8
+  # GPU‑accelerated stack
+  - cupy            # CuPy ≥ 13 – chosen variant will match CUDA 11.8
+  - cuml=25.04      # RAPIDS cuML 25.04 – matches Python 3.11 & CUDA 11.8
+  - pytorch         # PyTorch meta‑package
+  - pytorch-cuda=11.8
+  # Scientific Python
+  - numpy
+  - pandas>=2
+  - scipy
+  - matplotlib
+  - scikit-learn
+  - umap-learn
+  - pot             # Python Optimal Transport (imported as `ot`)
+  - scanpy
+  - ipykernel       # Jupyter kernel
+  - pip
+  - pip:
+      - geomloss    # not on conda, required for OT losses
