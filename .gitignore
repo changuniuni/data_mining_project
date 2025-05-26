@@ -191,6 +191,7 @@ benchmarks/
 experiments/
 notebooks/*.pdf
 
+.sh
 # Generated files
 classes.dot
 packages.dot
