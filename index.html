@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGW‑Embed: Dual‑Scale Optimal Transport Embeddings for Scalable Single‑Cell Analysis</title>
+  <meta name="description" content="Official project page for AGW‑Embed, a dual‑scale optimal‑transport dimensionality‑reduction method for single‑cell RNA‑seq data." />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <style>
+    :root {
+      --accent: #0066ff;
+      --bg: #ffffff;
+      --text: #121212;
+      --surface: #f5f7fa;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+    header {
+      background: var(--surface);
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+    }
+    .card {
+      background: var(--surface);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    footer {
+      background: var(--surface);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+    }
+    code {
+      background: #eee;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.875em;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #e3e3e3;
+        --surface: #1e1e1e;
+        --accent: #3b82f6;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+      }
+      .gallery img {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AGW‑Embed</h1>
+    <p>Dual‑Scale Optimal Transport Embeddings for Scalable Single‑Cell Analysis</p>
+    <nav>
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#paper">Paper &amp; Poster</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#metrics">Metrics</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="abstract" class="card">
+      <h2>Abstract</h2>
+      <p>
+        State‑of‑the‑art scRNA‑seq datasets routinely exceed 10<sup>5</sup> cells, rendering
+        classical dimensionality‑reduction tools inadequate for preserving both
+        global and local transcriptomic geometry. <strong>AGW‑Embed</strong> couples
+        Nyström‑landmark Sinkhorn distances with a graph‑Wasserstein regularizer,
+        achieving globally faithful, locally coherent embeddings in quasi‑linear
+        time and memory.
+      </p>
+    </section>
+
+    <section id="paper">
+      <h2>Paper &amp; Poster</h2>
+      <p>
+        Read the full details in our
+        <a href="real_data_mining.pdf" target="_blank">paper&nbsp;(PDF)</a> or browse the
+        condensed <a href="final_poster.pdf" target="_blank">conference poster</a>. All code is
+        open‑sourced on
+        <a href="https://github.com/changuniuni/data_mining_project" target="_blank"
+          >GitHub</a
+        >.
+      </p>
+    </section>
+
+    <section id="method">
+      <h2>Method at a Glance</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Dual‑scale objective:</strong> global Nyström Sinkhorn OT + local Graph‑Wasserstein.</li>
+          <li><strong>Quasi‑linear complexity:</strong> <code>Õ(n<sup>3/2</sup>g)</code> time, <code>O(n)</code> memory.</li>
+          <li><strong>GPU‑friendly:</strong> &lt; 1 GB memory for 3 k cells; 10× faster than full‑matrix OT.</li>
+          <li><strong>Biologically informed cost:</strong> incorporates GO/PPI gene relationships.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="results">
+      <h2>Visualization Gallery</h2>
+      <p>The figures below compare AGW‑Embed with popular DR baselines.</p>
+      <div class="gallery">
+        <img src="assets/pca_leiden.png" alt="PCA embedding with Leiden clusters" />
+        <img src="assets/umap_leiden.png" alt="UMAP embedding with Leiden clusters" />
+        <img src="assets/tsne_leiden.png" alt="t-SNE embedding with Leiden clusters" />
+        <img src="assets/agw_leiden.png" alt="AGW‑Embed embedding with Leiden clusters" />
+        <img src="assets/scgnn_leiden.png" alt="scGNN embedding with Leiden clusters" />
+        <img src="assets/scvi_leiden.png" alt="scVI embedding with Leiden clusters" />
+        <img src="assets/moscot_leiden.png" alt="Moscot embedding with Leiden clusters" />
+        <img src="assets/scot_leiden.png" alt="SCOTv2 embedding with Leiden clusters" />
+      </div>
+    </section>
+
+    <section id="metrics">
+      <h2>Quantitative Benchmarks</h2>
+      <p>
+        AGW‑Embed attains the highest global distance correlation (0.699) and
+        spectral‑graph concordance (0.095), outperforming scGNN by 24% and 20%,
+        respectively, while matching or exceeding classical and deep models on
+        Earth‑Mover's Distance and k‑NN preservation.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Changhyeon Kim –
+        <a href="mailto:changchang@unist.ac.kr">changchang@unist.ac.kr</a><br />
+        Department of Computer Science &amp; Engineering, UNIST, Republic of Korea
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2025 Changhyeon Kim. Built with ❤️ for the 2025 CSE304 Data Mining
+      poster session.<br />
+      Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a>.
+    </p>
+  </footer>
+</body>
+</html>
+
