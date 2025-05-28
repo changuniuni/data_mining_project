@@ -11,9 +11,6 @@ This repository contains all of the code developed for the “Introduction to Da
 - **onstart.sh**  
   Helper script to set up paths or launch notebooks.
 
-- **=0.9**  
-  Auxiliary file; can be ignored.
-
 - **SCOT/**  
   Implementation of Single-Cell Optimal Transport (SCOT) for aligning single-cell datasets.
 
